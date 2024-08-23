@@ -99,16 +99,23 @@ The data used here is from Kaggle https://www.kaggle.com/c/rossmann-store-sales/
 
 This project utilizes several features to predict sales. Below is a description of each feature and any input limitations:
 
-Day of the Week (1-7): Numerical value representing the day of the week, where 1 = Monday and 7 = Sunday.
-Number of Customers: The number of customers on a given day. This input is required for accurate predictions.
-Promo (0 or 1): Indicates whether a store is running a promotion on that day (1 = Yes, 0 = No).
-Assortment_a (0 or 1): Indicates whether the store has Assortment level 'a' (1 = Yes, 0 = No). Assortment 'a' represents a basic assortment.
-Assortment_c (0 or 1): Indicates whether the store has Assortment level 'c' (1 = Yes, 0 = No). Assortment 'c' represents an extended assortment
-Promo2 (0 or 1): Indicates whether the store is participating in Promo2, a continuous and consecutive promotion (1 = Yes, 0 = No).
-Sales_Lag1: The sales value of the previous day. This is to capture the impact of sales trends from one day to the next.
-Sales_Lag7: The sales value from the same day in the previous week. Useful for capturing weekly sales patterns.
-Month (1-12): The month of the year, represented numerically where 1 = January and 12 = December.
-Week of the Year (1-52): The week of the year, used to account for seasonality and other temporal effects.
+- \*\* Day of the Week (1-7): Numerical value representing the day of the week, where 1 = Monday and 7 = Sunday.
+
+- \*\* Number of Customers: The number of customers on a given day. Note: This feature was scaled using StandardScaler, resulting in a range of scaled values approximately between -1.81 and 8.23. Ensure that input values are scaled similarly or appropriately handled before using the model for predictions.
+
+- \*\* Assortment_a (0 or 1): Indicates whether the store has Assortment level 'a' (1 = Yes, 0 = No). Assortment 'a' represents a basic assortment.
+
+- \*\* Assortment_c (0 or 1): Indicates whether the store has Assortment level 'c' (1 = Yes, 0 = No). Assortment 'c' represents an extended assortment.
+
+- \*\* Promo2 (0 or 1): Indicates whether the store is participating in Promo2, a continuous and consecutive promotion (1 = Yes, 0 = No).
+
+- \*\* Sales_Lag1: The sales value of the previous day. This is to capture the impact of sales trends from one day to the next.
+
+- \*\* Sales_Lag7: The sales value from the same day in the previous week. Useful for capturing weekly sales patterns.
+
+- \*\* Month (1-12): The month of the year, represented numerically where 1 = January and 12 = December.
+
+- \*\* Week of the Year (1-52): The week of the year, used to account for seasonality and other temporal effects.
 
 ## Input Limitations:
 

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sales Forecast based on Historical Data</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Sales Forecast based on Historical Data</h1>
+    <form id="predict-form">
+      <label for="DayOfWeek">Day of the Week (1-7):</label>
+      <input
+        type="number"
+        id="DayOfWeek"
+        name="DayOfWeek"
+        min="1"
+        max="7"
+        required
+      />
+
+      <label for="Customers">Number of Customers:</label>
+      <input type="number" id="Customers" name="Customers" required />
+
+      <label for="Promo">Promo (0 or 1):</label>
+      <input type="number" id="Promo" name="Promo" min="0" max="1" required />
+
+      <label for="Assortment_a">Assortment_a (0 or 1):</label>
+      <input
+        type="number"
+        id="Assortment_a"
+        name="Assortment_a"
+        min="0"
+        max="1"
+        required
+      />
+
+      <label for="Assortment_c">Assortment_c (0 or 1):</label>
+      <input
+        type="number"
+        id="Assortment_c"
+        name="Assortment_c"
+        min="0"
+        max="1"
+        required
+      />
+
+      <label for="Promo2">Promo2 (0 or 1):</label>
+      <input type="number" id="Promo2" name="Promo2" min="0" max="1" required />
+
+      <label for="Sales_Lag1">Sales_Lag1:</label>
+      <input type="number" id="Sales_Lag1" name="Sales_Lag1" required />
+
+      <label for="Sales_Lag7">Sales_Lag7:</label>
+      <input type="number" id="Sales_Lag7" name="Sales_Lag7" required />
+
+      <label for="Month">Month (1-12):</label>
+      <input type="number" id="Month" name="Month" min="1" max="12" required />
+
+      <label for="WeekOfYear">Week of the Year (1-52):</label>
+      <input
+        type="number"
+        id="WeekOfYear"
+        name="WeekOfYear"
+        min="1"
+        max="52"
+        required
+      />
+
+      <button type="submit">Predict</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+      document
+        .getElementById("predict-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault(); // Prevent the form from submitting the traditional way
+          const features = {
+            DayOfWeek: parseInt(document.getElementById("DayOfWeek").value),
+            Customers: parseInt(document.getElementById("Customers").value),
+            Promo: parseInt(document.getElementById("Promo").value),
+            Assortment_a: parseInt(
+              document.getElementById("Assortment_a").value
+            ),
+            Assortment_c: parseInt(
+              document.getElementById("Assortment_c").value
+            ),
+            Promo2: parseInt(document.getElementById("Promo2").value),
+            Sales_Lag1: parseFloat(document.getElementById("Sales_Lag1").value),
+            Sales_Lag7: parseFloat(document.getElementById("Sales_Lag7").value),
+            Month: parseInt(document.getElementById("Month").value),
+            WeekOfYear: parseInt(document.getElementById("WeekOfYear").value),
+          };
+
+          fetch("http://127.0.0.1:5000/predict", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ features: features }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              document.getElementById("result").textContent =
+                "Prediction: " + data.prediction;
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        });
+    </script>
+  </body>
+</html>

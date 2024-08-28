@@ -1,5 +1,14 @@
 # Sales-Forecasting-and-Analysis-for-Rossmann-Store-Sales
 
+## Introduction
+
+This project focuses on analyzing and forecasting sales data for Rossmann stores using datasets provided by Kaggle. The objective is to build predictive models to forecast future sales and to gain insights into sales patterns across various stores. The analysis involves several key steps, including data preprocessing, feature engineering, the application of time series forecasting techniques and predictive model building. The project is implemented in a Jupyter Notebook and focuses on evaluating the performance of different regression models. 
+
+### Web Interface and API
+
+HTML Interface: The project includes a simple HTML form where users can input feature values. Upon submission, the form sends a request to a Flask API, allowing for real-time sales forecasting by sending relevant features as input and receiving predictions as output.
+Flask API: The backend of the web interface is built using Flask. It exposes an endpoint to accept feature inputs and return predictions.
+
 Follow these steps to set up and run the project:
 
 ## 1. Clone the Repository
@@ -67,10 +76,6 @@ open index.html
 ```bash
 start index.html
 ```
-
-## Introduction
-
-This project focuses on analyzing and forecasting sales data for Rossmann stores using datasets provided by Kaggle. The objective is to build predictive models to forecast future sales and to gain insights into sales patterns across various stores. The analysis involves several key steps, including data preprocessing, feature engineering, the application of time series forecasting techniques and predictive model building. The project is implemented in a Jupyter Notebook and focuses on evaluating the performance of different regression models.
 
 ## Key Features
 
